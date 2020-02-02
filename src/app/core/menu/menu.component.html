@@ -1,0 +1,7 @@
+<nav>
+    <ul>
+        <li *ngFor='let mi of menuItems' title='{{mi.tolltip}}'>
+            <a routerLink='{{mi.href}}'>{{mi.display}}</a>
+        </li>
+    </ul>
+</nav>
