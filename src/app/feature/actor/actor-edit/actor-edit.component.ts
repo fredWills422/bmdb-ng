@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Actor } from 'src/app/model/actor.class';
 import { ActorService } from 'src/app/service/actor.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-actor-edit',
@@ -16,7 +17,8 @@ export class ActorEditComponent implements OnInit {
   id: number = 0;
   constructor(private actorSvc: ActorService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private location: Location) { }
 
   ngOnInit() {
     //get actor id from the url call service to populate actor property
@@ -33,6 +35,10 @@ export class ActorEditComponent implements OnInit {
       }
       this.router.navigateByUrl('/actor/list');
     });
+  }
+
+  backClicked(){
+    this.location.back();
   }
 
 }
