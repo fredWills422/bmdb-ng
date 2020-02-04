@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Credit } from 'src/app/model/credit.class';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common'
+
 import { Movie } from 'src/app/model/movie.class';
 import { Actor } from 'src/app/model/actor.class';
-import { CreditService } from 'src/app/service/credit.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ActorService } from 'src/app/service/actor.service';
+import { Credit } from 'src/app/model/credit.class';
+
 import { MovieService } from 'src/app/service/movie.service';
+import { ActorService } from 'src/app/service/actor.service';
+import { CreditService } from 'src/app/service/credit.service';
+
 
 @Component({
   selector: 'app-credit-edit',
@@ -25,7 +29,8 @@ export class CreditEditComponent implements OnInit {
               private movieSvc: MovieService,
               private actorSvc: ActorService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private location: Location) { }
 
   ngOnInit() {
     //get credit id from the url call service to populate credit property
@@ -42,6 +47,7 @@ export class CreditEditComponent implements OnInit {
         console.log(this.movies);
       }
     );
+
     this.actorSvc.list().subscribe(
       jr => {
         this.actors = jr.data as Actor[];
@@ -64,8 +70,13 @@ export class CreditEditComponent implements OnInit {
   compMovie(a: Movie, b: Movie): boolean {
     return a && b && a.id === b.id;
   }
+  
   compActor(a: Actor, b: Actor): boolean {
     return a && b && a.id === b.id;
+  }
+
+  backClicked(){
+    this.location.back();
   }
 
 }

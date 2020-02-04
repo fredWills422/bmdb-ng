@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Credit } from 'src/app/model/credit.class';
-import { CreditService } from 'src/app/service/credit.service';
-import { Router } from '@angular/router';
-import { MovieService } from 'src/app/service/movie.service';
-import { ActorService } from 'src/app/service/actor.service';
+
 import { Movie } from 'src/app/model/movie.class';
 import { Actor } from 'src/app/model/actor.class';
+import { Credit } from 'src/app/model/credit.class';
+
+import { MovieService } from 'src/app/service/movie.service';
+import { ActorService } from 'src/app/service/actor.service';
+import { CreditService } from 'src/app/service/credit.service';
+
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-credit-create',
@@ -24,7 +28,8 @@ export class CreditCreateComponent implements OnInit {
   constructor(private creditSvc: CreditService,
               private movieSvc: MovieService,
               private actorSvc: ActorService,
-              private router: Router) { }
+              private router: Router,
+              private location: Location) { }
 
   ngOnInit() {
     //populate movies
@@ -51,6 +56,10 @@ export class CreditCreateComponent implements OnInit {
       }
       this.router.navigateByUrl('/credit/list');
     });
+  }
+
+  backClicked(){
+    this.location.back();
   }
 
 }
