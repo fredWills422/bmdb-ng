@@ -23,6 +23,8 @@ import { CreditListComponent } from './feature/credit/credit-list/credit-list.co
 import { CreditCreateComponent } from './feature/credit/credit-create/credit-create.component';
 import { CreditEditComponent } from './feature/credit/credit-edit/credit-edit.component';
 import { CreditDetailComponent } from './feature/credit/credit-detail/credit-detail.component';
+import { SortPipe } from './pipe/sort.pipe';
+import { BaseComponent } from './base/base.component';
 
 
 @NgModule({
@@ -44,6 +46,8 @@ import { CreditDetailComponent } from './feature/credit/credit-detail/credit-det
     CreditCreateComponent,
     CreditEditComponent,
     CreditDetailComponent,
+    SortPipe,
+    BaseComponent,
     
   ],
   imports: [

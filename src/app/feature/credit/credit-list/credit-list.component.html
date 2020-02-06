@@ -7,7 +7,7 @@
 <table *ngIf='credits' class="table table-striped table sm">
     <thead class="thead-dark">
         <tr>
-            <th>ID</th>
+            <th><a (click)="sort('id')">ID</a></th>
             <th>Actor</th>
             <th>Movie</th>
             <th>Role</th>
@@ -15,7 +15,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor='let credit of credits'>
+        <tr *ngFor='let credit of credits | sort:sortColumn:ascOrder '>
             <td>{{credit.id}}</td>
             <td>{{credit.actor.lastName}},{{credit.actor.firstName}}</td>
             <td>{{credit.movie.title}}</td>
